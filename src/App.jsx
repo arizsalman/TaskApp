@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-     
+     <h1> My FireBase Authantication</h1>
     </>
   )
 }
