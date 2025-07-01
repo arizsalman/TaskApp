@@ -8,7 +8,8 @@ import { auth,provider } from '../firebase/firebase';
 import WellcomeMasege from './WellcomeMasege';
 // import TodoItem from './TodoItem.jsx';
 import TodoType1 from './TodoType1';
-import TodoItem from './TodoItem.Jsx';
+import TodoItem from './TodoItem.jsx';
+// import TodoItem from './TodoItem.Jsx';
 
 
 
