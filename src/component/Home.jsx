@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import AddTask from './AddTask';
 
 const Home = () => {
   // const navigate = useNavigate();
@@ -25,6 +26,7 @@ const Home = () => {
     
       <div className="container mt-5">
         <h1>This is My Home Page</h1>
+        <AddTask/>
       </div>
     </>
   );
