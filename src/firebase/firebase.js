@@ -1,5 +1,5 @@
 
-
+import { gapi } from "gapi-script";
 import { initializeApp } from "firebase/app";
 import { getAuth ,GoogleAuthProvider } from "firebase/auth";
 
@@ -7,6 +7,7 @@ import { getFirestore } from "firebase/firestore";
 import {  signInWithPopup } from "firebase/auth";
 
 
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 
 const firebaseConfig = {

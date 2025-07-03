@@ -73,36 +73,41 @@
 // export default Login;
 
 
-
-
-
 import React from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { app } from '../firebase/firebase';
+// import { app } from '../firebase/firebase';
 
 const Login = () => {
-  const navigate = useNavigate(); // 👈 for navigation
+  const navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
+
+    // ✅ Add Calendar scope
+    provider.addScope("https://www.googleapis.com/auth/calendar.events");
+
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log('User signed in:', user);
 
-      // ✅ Navigate to Home page after login
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+
+      console.log('✅ Firebase user:', user);
+      console.log('📘 Google Access Token:', token);
+
+      // Optional: store token in localStorage or useContext
       navigate('/');
     } catch (error) {
-      console.error('Google Sign-in Error:', error);
+      console.error('❌ Google Sign-in Error:', error);
     }
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // Dummy check: you can add your login logic here
-    // ✅ Navigate to Home page after form submit
     navigate('/');
   };
 
@@ -110,6 +115,7 @@ const Login = () => {
     <>
       <form onSubmit={handleFormSubmit}>
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+
         <div className="form-floating mb-3">
           <input
             type="email"
@@ -119,6 +125,7 @@ const Login = () => {
           />
           <label htmlFor="floatingInput">Email address</label>
         </div>
+
         <div className="form-floating mb-3">
           <input
             type="password"
@@ -128,11 +135,11 @@ const Login = () => {
           />
           <label htmlFor="floatingPassword">Password</label>
         </div>
+
         <div className="form-check text-start my-3">
           <input
             className="form-check-input"
             type="checkbox"
-            defaultValue="remember-me"
             id="checkDefault"
           />
           <label className="form-check-label" htmlFor="checkDefault">
@@ -152,7 +159,7 @@ const Login = () => {
           Sign in with Google
         </button>
 
-        <p className="mt-5 mb-3 text-body-secondary">© 2017–2025</p>
+        <p className="mt-5 mb-3 text-body-secondary">2025</p>
       </form>
     </>
   );

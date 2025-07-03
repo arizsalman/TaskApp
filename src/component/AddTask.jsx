@@ -1,4 +1,7 @@
+
+
 import React, { useEffect, useState } from 'react';
+import { gapi } from "gapi-script";
 // import { signInWithPopup } from 'firebase/auth/web-extension';
 import { signInWithPopup } from 'firebase/auth'; 
 
@@ -6,10 +9,13 @@ import { signOut,onAuthStateChanged } from 'firebase/auth';
 import { auth,provider } from '../firebase/firebase';
 
 import WellcomeMasege from './WellcomeMasege';
-// import TodoItem from './TodoItem.jsx';
+
 import TodoType1 from './TodoType1';
+import'bootstrap/dist/css/bootstrap.min.css'
 import TodoItem from './TodoItem.jsx';
-// import TodoItem from './TodoItem.Jsx';
+
+
+
 
 
 
@@ -55,11 +61,14 @@ const App = () => {
 
   return (
     <div className="container mt-4">
+      <h1>Todo App + Google Calendar</h1>
+      {/* <GoogleAuth /> */}
+      
       <div className="d-flex justify-content-between align-items-center">
-        <h2>Hello, {user.displayName}</h2>
+        {/* <h2>Hello, {user.displayName}</h2>
         <button className="btn btn-danger" onClick={handleLogout}>
           Sign Out
-        </button>
+        </button> */}
       </div>
         <WellcomeMasege></WellcomeMasege>
   
@@ -76,6 +85,7 @@ const App = () => {
 
 
       ))}
+
     </div>
   );
 };
